@@ -1,0 +1,968 @@
+{
+	"info": {
+		"_postman_id": "curriculum-api-collection",
+		"name": "API Curriculum - Gerenciamento de Currículos",
+		"description": "Collection completa para testar a API REST de gerenciamento de currículos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pessoas",
+			"item": [
+				{
+					"name": "Listar Todas as Pessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pessoas",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas"]
+						}
+					}
+				},
+				{
+					"name": "Buscar Pessoa por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pessoas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Pessoa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"endereco\": \"Rua Exemplo, 123\",\n  \"cidade\": \"Recife\",\n  \"estado\": \"PE\",\n  \"cep\": \"50000-000\",\n  \"telefone\": \"(81) 99999-9999\",\n  \"email\": \"joao@email.com\",\n  \"linkedin\": \"linkedin.com/in/joao-silva\",\n  \"github\": \"github.com/joaosilva\",\n  \"objetivo_profissional\": \"Desenvolver soluções inovadoras como Desenvolvedor Full Stack\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pessoas",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Pessoa",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva Atualizado\",\n  \"endereco\": \"Rua Exemplo, 456\",\n  \"cidade\": \"Recife\",\n  \"estado\": \"PE\",\n  \"cep\": \"50000-001\",\n  \"telefone\": \"(81) 98888-8888\",\n  \"email\": \"joao.atualizado@email.com\",\n  \"linkedin\": \"linkedin.com/in/joao-silva-atualizado\",\n  \"github\": \"github.com/joaosilva\",\n  \"objetivo_profissional\": \"Desenvolver soluções inovadoras como Desenvolvedor Full Stack Senior\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pessoas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Pessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pessoas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Formações",
+			"item": [
+				{
+					"name": "Listar Todas as Formações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/formacoes",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes"]
+						}
+					}
+				},
+				{
+					"name": "Listar Formações por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/formacoes?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Formação por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/formacoes/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Formação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa_id\": {{pessoa_id}},\n  \"curso\": \"Bacharelado em Ciência da Computação\",\n  \"instituicao\": \"UFPE\",\n  \"inicio\": \"2018\",\n  \"fim\": \"2022\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/formacoes",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Formação",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"curso\": \"Bacharelado em Engenharia de Software\",\n  \"instituicao\": \"UFPE\",\n  \"inicio\": \"2018\",\n  \"fim\": \"2023\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/formacoes/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Formação",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/formacoes/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Experiências",
+			"item": [
+				{
+					"name": "Listar Todas as Experiências",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/experiencias",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias"]
+						}
+					}
+				},
+				{
+					"name": "Listar Experiências por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/experiencias?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Experiência por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/experiencias/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Experiência",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa_id\": {{pessoa_id}},\n  \"cargo\": \"Desenvolvedor Full Stack\",\n  \"empresa\": \"Tech Solutions\",\n  \"inicio\": \"jan 2023\",\n  \"fim\": \"atual\",\n  \"descricao\": \"Desenvolvimento de aplicações web e mobile utilizando React e Node.js\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/experiencias",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Experiência",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cargo\": \"Desenvolvedor Full Stack Senior\",\n  \"empresa\": \"Tech Solutions\",\n  \"inicio\": \"jan 2023\",\n  \"fim\": \"atual\",\n  \"descricao\": \"Desenvolvimento de aplicações web e mobile utilizando React, Node.js e TypeScript\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/experiencias/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Experiência",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/experiencias/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Ferramentas Utilizadas",
+			"item": [
+				{
+					"name": "Listar Todas as Ferramentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas"]
+						}
+					}
+				},
+				{
+					"name": "Listar Ferramentas por Experiência",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas?experiencia_id={{experiencia_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas"],
+							"query": [
+								{
+									"key": "experiencia_id",
+									"value": "{{experiencia_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Ferramenta por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Ferramenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"experiencia_id\": {{experiencia_id}},\n  \"nome\": \"React\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Ferramenta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"React Native\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Ferramenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Conhecimentos",
+			"item": [
+				{
+					"name": "Listar Todos os Conhecimentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos"]
+						}
+					}
+				},
+				{
+					"name": "Listar Conhecimentos por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Conhecimento por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Novo Conhecimento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa_id\": {{pessoa_id}},\n  \"curso\": \"Certificação AWS Cloud Practitioner\",\n  \"instituicao\": \"Amazon Web Services\",\n  \"ano\": \"2023\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Conhecimento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"curso\": \"Certificação AWS Solutions Architect\",\n  \"instituicao\": \"Amazon Web Services\",\n  \"ano\": \"2024\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Conhecimento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Soft Skills",
+			"item": [
+				{
+					"name": "Listar Todas as Soft Skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/softskills",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills"]
+						}
+					}
+				},
+				{
+					"name": "Listar Soft Skills por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/softskills?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Soft Skill por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/softskills/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Soft Skill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa_id\": {{pessoa_id}},\n  \"descricao\": \"Liderança\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/softskills",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Soft Skill",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Liderança de Equipes\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/softskills/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Soft Skill",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/softskills/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Habilidades",
+			"item": [
+				{
+					"name": "Listar Todas as Habilidades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/habilidades",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades"]
+						}
+					}
+				},
+				{
+					"name": "Listar Habilidades por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/habilidades?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Buscar Habilidade por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/habilidades/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Criar Nova Habilidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa_id\": {{pessoa_id}},\n  \"nome\": \"TypeScript\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/habilidades",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades"]
+						}
+					}
+				},
+				{
+					"name": "Atualizar Habilidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"TypeScript Avançado\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/habilidades/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Deletar Habilidade",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/habilidades/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Testes de Relacionamentos",
+			"item": [
+				{
+					"name": "1. Listar Pessoas (pegar ID)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pessoas",
+							"host": ["{{base_url}}"],
+							"path": ["api", "pessoas"]
+						}
+					}
+				},
+				{
+					"name": "2. Buscar Formações de uma Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/formacoes?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "formacoes"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "3. Buscar Experiências de uma Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/experiencias?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "experiencias"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "4. Buscar Ferramentas de uma Experiência",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/ferramentas-utilizadas?experiencia_id={{experiencia_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "ferramentas-utilizadas"],
+							"query": [
+								{
+									"key": "experiencia_id",
+									"value": "{{experiencia_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "5. Buscar Conhecimentos de uma Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conhecimentos?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "conhecimentos"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "6. Buscar Soft Skills de uma Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/softskills?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "softskills"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "7. Buscar Habilidades de uma Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/habilidades?pessoa_id={{pessoa_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "habilidades"],
+							"query": [
+								{
+									"key": "pessoa_id",
+									"value": "{{pessoa_id}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "pessoa_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "experiencia_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
+
