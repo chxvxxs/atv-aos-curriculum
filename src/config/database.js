@@ -1,12 +1,13 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Suporta DATABASE_URL (usado por serviços como Supabase, Railway, Neon, etc.)
-// ou variáveis individuais
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Cria pool de conexão
 const pool = process.env.DATABASE_URL
   ? new Pool({
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+      ssl: { rejectUnauthorized: false } // 
     })
   : new Pool({
       host: process.env.DB_HOST || 'localhost',
@@ -14,15 +15,16 @@ const pool = process.env.DATABASE_URL
       database: process.env.DB_NAME || 'curriculum_db',
       user: process.env.DB_USER || 'postgres',
       password: process.env.DB_PASSWORD || 'postgres',
+      ssl: isProduction ? { rejectUnauthorized: false } : false, // opcional local
     });
 
+// Eventos úteis para debug
 pool.on('connect', () => {
-  console.log('Conectado ao banco de dados PostgreSQL');
+  console.log('✅ Conectado ao banco de dados PostgreSQL');
 });
 
 pool.on('error', (err) => {
-  console.error('Erro no banco de dados:', err);
+  console.error('❌ Erro no banco de dados:', err);
 });
 
 module.exports = pool;
-
