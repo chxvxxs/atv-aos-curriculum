@@ -2,8 +2,6 @@ require('dotenv').config();
 const app = require('./app');
 const pool = require('./config/database');
 
-const PORT = process.env.PORT || 3000;
-
 // Testar conexão com banco
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -13,8 +11,14 @@ pool.query('SELECT NOW()', (err, res) => {
   console.log('Banco de dados conectado:', res.rows[0].now);
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-  console.log(`API disponível em http://localhost:${PORT}`);
-});
+// 🚀 Só roda o app.listen localmente
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`API disponível em http://localhost:${PORT}`);
+  });
+}
 
+// ✅ Exporta o app para a Vercel usar
+module.exports = app;
